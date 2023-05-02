@@ -7,6 +7,7 @@ import { baseURL } from '~/services/api'
 export default function Pokemon() {
     const pathname = usePathname()
     const url = baseURL + '/pokemon' + pathname
+    const murilo = 2;
 
     const { pokemon, isLoading } = useFetchPokemon(url)
 
