@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import CardPokemon from "~/components/molecules/card-pokemon/card-pokemon";
+import MyTabs from "~/components/molecules/geration-pokemon/geration-pokemon";
 import api from "~/services/api";
 import { ListPokemons } from "~/types/pokemons";
 
@@ -36,15 +37,28 @@ const HomePage = () => {
 
   return (
     <>
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center mb-4">
       <label htmlFor="">POKEAPI</label>
       <input className="text-black rounded-lg p-2" value={text} onChange={(e)=>setText(e.target.value)} type="text" placeholder="Digite seu pokemon" />
     </div>
+    <MyTabs>
     <div className="flex gap-2 flex-wrap justify-center">
-      {pokemons.slice(0, 153).map((pokemon) => (
+      {pokemons.slice(0, 151).map((pokemon) => (
         <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
       ))}
     </div>
+    <div className="flex gap-2 flex-wrap justify-center">
+      {pokemons.slice(151, 251).map((pokemon) => (
+        <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+      ))}
+    </div>
+    <div className="flex gap-2 flex-wrap justify-center">
+      {pokemons.slice(251, 386).map((pokemon) => (
+        <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+      ))}
+    </div>
+    </MyTabs>
+ 
     </>
   );
 };
