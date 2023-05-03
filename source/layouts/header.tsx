@@ -26,6 +26,11 @@ const Header = () => {
           PokeNext Estácio!
         </h2>
       </Link>
+      <div className="flex">
+          <ul>
+            <li>Login</li>
+          </ul>
+      </div>
     </header>
   );
 };
