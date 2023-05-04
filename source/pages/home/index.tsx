@@ -46,7 +46,7 @@ const HomePage = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center mb-4">
-        <label htmlFor="">POKEAPI</label>
+        <label htmlFor="">POKE API</label>
         <input className="text-black rounded-lg p-2" value={text} onChange={(e) => setText(e.target.value)} type="text" placeholder="Digite seu pokemon" />
       </div>
       <MyButtons setActiveIndex={setActiveIndex} />
