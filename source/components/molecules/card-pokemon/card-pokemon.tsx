@@ -7,7 +7,7 @@ type CardPokemonProps = {
     name: string
 }
 
-const CardPokemon = ({ url, name}: CardPokemonProps) => {
+const CardPokemon = ({ url, name }: CardPokemonProps) => {
 
     const { pokemon, isLoading } = useFetchPokemon(url)
 
