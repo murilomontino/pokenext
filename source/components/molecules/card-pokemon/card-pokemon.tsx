@@ -13,7 +13,7 @@ const CardPokemon = ({ url, name }: CardPokemonProps) => {
 
     return (
         <Link href={`/${name}`}>
-            <div key={name} className="flex-1 card">
+            <div key={name} className={`flex-1 card ${pokemon?.types[0].type.name}`}>
                 {
                     pokemon && (
                         <Image src={pokemon?.sprites?.front_default} width={100} height={100} alt={pokemon?.name} />
