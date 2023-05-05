@@ -10,6 +10,7 @@ const HomePage = () => {
   const [text, setText] = useState('')
   const [query, setQuery] = useState<ListPokemons[]>([]);
   const [activeIndex, setActiveIndex] = useState(1);
+  const [filteredPokemons, setFilteredPokemons] = useState<ListPokemons[]>([]);
   const deferredQuery = useDeferredValue(query);
 
   const fetchPokemons = async () => {
@@ -21,27 +22,54 @@ const HomePage = () => {
     }
   };
 
+  const firstGen = pokemons.slice(0, 151)
+  const firstGenSliced = firstGen.slice(0, 151);
+  const secondGen = pokemons.slice(151, 251)
+  const secondGenSliced = secondGen.slice(0, 100);
+  const threeGen = pokemons.slice(251, 386)
+  const threeGenSliced = threeGen.slice(0, 135);
+
+
   useEffect(() => {
     fetchPokemons();
   }, []);
 
+  console.log(activeIndex);
 
 
   useEffect(() => {
-    const filteredPokemons = () => {
+    const filt1gen = () => {
       if (!text) {
-        return deferredQuery;
+        return firstGen;
+      } else {
+        return firstGenSliced.filter((item) => (item.name.includes(text.toLowerCase())))
       }
-      return deferredQuery.filter((item) => (item.name.includes(text.toLowerCase())))
     }
-    setPokemons(filteredPokemons)
-  }, [text]);
-
-  const firstGen = pokemons.slice(0, 151)
-  const secondGen = pokemons.slice(151, 251)
-  const threeGen = pokemons.slice(251, 386)
-
-  console.log(text);
+    const filt2gen = () => {
+      if (!text) {
+        return secondGen;
+      } else {
+        return secondGenSliced.filter((item) => (item.name.includes(text.toLowerCase())))
+      }
+    }
+    const filt3gen = () => {
+      if (!text) {
+        return threeGen;
+      } else {
+        return threeGenSliced.filter((item) => (item.name.includes(text.toLowerCase())))
+      }
+    }
+    if (activeIndex === 1) {
+      setFilteredPokemons(filt1gen())
+    } else if (activeIndex === 2) {
+      setFilteredPokemons(filt2gen())
+    }
+    else if (activeIndex === 3) {
+      setFilteredPokemons(filt3gen())
+    } else if (!activeIndex) {
+      setPokemons(firstGen)
+    }
+  }, [text, activeIndex]);
 
   return (
     <>
@@ -53,7 +81,7 @@ const HomePage = () => {
       {activeIndex === 1 && (
         <div className="flex gap-2 flex-wrap justify-center">
           {
-            firstGen.map((pokemon) => (
+            filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
             ))
           }
@@ -62,7 +90,7 @@ const HomePage = () => {
       {activeIndex === 2 && (
         <div className="flex gap-2 flex-wrap justify-center">
           {
-            secondGen.map((pokemon) => (
+            filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
             ))
           }
@@ -71,7 +99,7 @@ const HomePage = () => {
       {activeIndex === 3 && (
         <div className="flex gap-2 flex-wrap justify-center">
           {
-            threeGen.map((pokemon) => (
+            filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
             ))
           }
