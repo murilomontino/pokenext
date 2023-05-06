@@ -79,7 +79,7 @@ const HomePage = () => {
       </div>
       <MyButtons setActiveIndex={setActiveIndex} />
       {activeIndex === 1 && (
-        <div className="py-4 rounded-lg bg-white flex gap-2 flex-wrap justify-center">
+        <div className="py-4 rounded-lg bg-white flex gap-2 flex-wrap justify-center mt-4">
           {
             filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
@@ -88,7 +88,7 @@ const HomePage = () => {
         </div>
       )}
       {activeIndex === 2 && (
-        <div className="py-4 bg-white rounded-lg flex gap-2 flex-wrap justify-center">
+        <div className="py-4 bg-white rounded-lg flex gap-2 flex-wrap justify-center mt-4">
           {
             filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
@@ -97,7 +97,7 @@ const HomePage = () => {
         </div>
       )}
       {activeIndex === 3 && (
-        <div className="py-4 bg-white rounded-lg flex gap-2 flex-wrap justify-center">
+        <div className="py-4 bg-white rounded-lg flex gap-2 flex-wrap justify-center mt-4">
           {
             filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
