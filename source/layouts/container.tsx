@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 const Container = ({ children }: ContainerProps) => {
+
     return (
         <>
             <Header />
