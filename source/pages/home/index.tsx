@@ -67,19 +67,19 @@ const HomePage = () => {
     else if (activeIndex === 3) {
       setFilteredPokemons(filt3gen())
     } else if (!activeIndex) {
-      setPokemons(pokemons.slice(0, 151))
+      setFilteredPokemons(filt1gen())
     }
   }, [text, activeIndex]);
 
   return (
     <>
       <div className="flex flex-col justify-center items-center mb-4">
-        <label htmlFor="">POKE API</label>
-        <input className="text-black rounded-lg p-2" value={text} onChange={(e) => setText(e.target.value)} type="text" placeholder="Digite seu pokemon" />
+        <label className="text-black" htmlFor="">POKE API</label>
+        <input type="text" placeholder="Type here" className="input w-full max-w-xs" value={text} onChange={(e) => setText(e.target.value)} />
       </div>
       <MyButtons setActiveIndex={setActiveIndex} />
       {activeIndex === 1 && (
-        <div className="flex gap-2 flex-wrap justify-center">
+        <div className="py-4 rounded-lg bg-white flex gap-2 flex-wrap justify-center">
           {
             filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
@@ -88,7 +88,7 @@ const HomePage = () => {
         </div>
       )}
       {activeIndex === 2 && (
-        <div className="flex gap-2 flex-wrap justify-center">
+        <div className="py-4 bg-white rounded-lg flex gap-2 flex-wrap justify-center">
           {
             filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
@@ -97,7 +97,7 @@ const HomePage = () => {
         </div>
       )}
       {activeIndex === 3 && (
-        <div className="flex gap-2 flex-wrap justify-center">
+        <div className="py-4 bg-white rounded-lg flex gap-2 flex-wrap justify-center">
           {
             filteredPokemons.map((pokemon) => (
               <CardPokemon key={pokemon.name} name={pokemon.name} url={pokemon.url} />
