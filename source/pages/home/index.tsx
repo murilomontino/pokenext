@@ -67,7 +67,7 @@ const HomePage = () => {
     else if (activeIndex === 3) {
       setFilteredPokemons(filt3gen())
     } else if (!activeIndex) {
-      setPokemons(firstGen)
+      setPokemons(pokemons.slice(0, 151))
     }
   }, [text, activeIndex]);
 
