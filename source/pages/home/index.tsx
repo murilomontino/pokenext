@@ -77,6 +77,7 @@ const HomePage = () => {
     }
   }, [text, activeIndex]);
 
+
   console.log(filteredPokemons);
 
 
