@@ -13,7 +13,7 @@ const CardPokemon = ({ url, name }: CardPokemonProps) => {
 
     return (
         <Link href={`/${name}`}>
-            <div key={name} className={`flex-1  card ${pokemon?.types[0].type.name}`}>
+            <div key={name} className={`flex-1 2xl:w-60 card ${pokemon?.types[0].type.name}`}>
                 <div className="flex gap-2">
                     {pokemon?.types?.map((pokemons) => (
 
