@@ -20,7 +20,10 @@ const HomePage = () => {
     if (status === 200) {
       setPokemons(data.results);
       setPokeDefault(data.results)
+      localStorage.setItem("poke", JSON.stringify(pokeDefault));
     }
+
+
   };
 
   const firstGen = pokemons.slice(0, 151)
@@ -33,7 +36,7 @@ const HomePage = () => {
     fetchPokemons();
   }, []);
 
-  console.log(text);
+
 
   useEffect(() => {
     const filtgen = () => {
@@ -76,11 +79,6 @@ const HomePage = () => {
       setFilteredPokemons(filt3gen())
     }
   }, [text, activeIndex]);
-
-
-  console.log(filteredPokemons);
-
-
 
   return (
     <>
